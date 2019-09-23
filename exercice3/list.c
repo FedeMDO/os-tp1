@@ -49,6 +49,7 @@ void average_list(List li)
 	}
 	result = accumulator / cnt;
 	printf("La moyenne est: %f\n", result);
+	return;
 }
 
 /*----------------------------------------------------------------*/
@@ -247,6 +248,17 @@ List pop_back_list(List li)
 	temp = NULL;
 
 	li->length--;
+
+	// now we have to change the last and put NULL on his NEXT reference
+	ListNode *tempAux = li->begin;
+	while(tempAux != NULL){
+		if(tempAux->next->next == NULL){
+			li->end = tempAux;
+			tempAux->next = NULL;
+			break;
+		}
+		tempAux = tempAux->next;
+	}
 
 	return li;
 }
