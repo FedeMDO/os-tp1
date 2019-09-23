@@ -49,14 +49,11 @@ void mapFile()
     mapped = mmap(0, fsize, PROT_READ, MAP_PRIVATE, fd, 0);
     char buf[(int)fsize];
     int y = 0;
-    printf("%d\n", (int)fsize);
     for (i = (int)fsize - 1; i >= 0; i--)
     {
-        if(mapped[i] != '\n'){
-            char c = mapped[i];
-            buf[y] = c;
-            y++;
-        }
+        char c = mapped[i];
+        buf[y] = c;
+        y++;
     }
     buf[y] = '\0';
     printf("mapped one %s\n", mapped);

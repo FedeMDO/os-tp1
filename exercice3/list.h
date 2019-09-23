@@ -19,6 +19,7 @@
     /* Prototypes Listes */
 	List new_list(void);
 	int is_empty_list(List li);
+	void average_list(List li);
 	int list_length(List li);
 	int list_first(List li);
 	int list_last(List li);

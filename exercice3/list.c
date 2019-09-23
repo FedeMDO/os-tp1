@@ -28,6 +28,32 @@ int is_empty_list(List li)
 /*----------------------------------------------------------------*/
 
 /**
+* Moyenne
+* @param li La Liste
+*/
+void average_list(List li)
+{
+	if(is_empty_list(li) == 1)
+	{
+		printf("Rien a afficher, la Liste est vide.\n");
+		return;
+	}
+	ListNode *temp = li->begin;
+	float accumulator = 0, result;
+	int cnt = 0;
+	while(temp != NULL)
+	{
+		accumulator += temp->value;
+		temp = temp->next;
+		cnt++;
+	}
+	result = accumulator / cnt;
+	printf("La moyenne est: %f\n", result);
+}
+
+/*----------------------------------------------------------------*/
+
+/**
 * Retourne la longueur d'une Liste
 * @param li La Liste
 * @return Le nombre d'éléments de la Liste
