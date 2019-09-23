@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "dlist.h"
+#include "list.h"
 
 /**
 * Retourne une Liste vide
@@ -16,14 +16,13 @@ List new_list(void)
 /**
 * Teste si une Liste est vide
 * @param li La Liste
-* @return true si la DListe ne contient pas d'éléments, false sinon
+* @return true si la Liste ne contient pas d'éléments, false sinon
 */
-Bool is_empty_list(List li)
+int is_empty_list(List li)
 {
 	if(li == NULL)
-		return true;
-
-	return false;
+		return 1;
+	return 0;
 }
 
 /*----------------------------------------------------------------*/
@@ -35,9 +34,8 @@ Bool is_empty_list(List li)
 */
 int list_length(List li)
 {
-	if(is_empty_dlist(li))
+	if(is_empty_list(li) == 1)
 		return 0;
-
 	return li->length;
 }
 
@@ -45,12 +43,12 @@ int list_length(List li)
 
 /**
 * Retourne le premier élément de la Liste
-* @param li La DListe
+* @param li La Liste
 * @return Le premier entier
 */
 int list_first(List li)
 {
-	if(is_empty_dlist(li))
+	if(is_empty_list(li) == 1)
 		exit(1);
 
 	return li->begin->value;
@@ -63,7 +61,7 @@ int list_first(List li)
 */
 int list_last(List li)
 {
-	if(is_empty_dlist(li))
+	if(is_empty_list(li) == 1)
 		exit(1);
 
 	return li->end->value;
@@ -77,13 +75,13 @@ int list_last(List li)
 */
 void print_list(List li)
 {
-	if(is_empty_list(li))
+	if(is_empty_list(li) == 1)
 	{
 		printf("Rien a afficher, la Liste est vide.\n");
 		return;
 	}
 
-	DListNode *temp = li->begin;
+	ListNode *temp = li->begin;
 
 	while(temp != NULL)
 	{
@@ -98,7 +96,7 @@ void print_list(List li)
 
 /**
 * Insère un élément en fin de Liste
-* @param li La DListe
+* @param li La Liste
 * @param x L'entier à ajouter
 * @return La Liste avec son élément ajouté
 */
@@ -117,7 +115,7 @@ List push_back_list(List li, int x)
 	element->value = x;
 	element->next = NULL;
 
-	if(is_empty_dlist(li))
+	if(is_empty_list(li) == 1)
 	{
 		li = malloc(sizeof(*li));
 
@@ -165,7 +163,7 @@ List push_front_list(List li, int x)
 	element->value = x;
 	element->next = NULL;
 
-	if(is_empty_dlist(li))
+	if(is_empty_list(li) == 1)
 	{
 		li = malloc(sizeof(*li));
 
@@ -193,17 +191,17 @@ List push_front_list(List li, int x)
 /*----------------------------------------------------------------*/
 
 /**
-* Retire un élément en fin de DListe
-* @param li La DListe
+* Retire un élément en fin de Liste
+* @param li La Liste
 * @param x L'entier à supprimer
-* @return La DListe moins l'élément supprimé
+* @return La Liste moins l'élément supprimé
 */
 List pop_back_list(List li)
 {
-	if(is_empty_dlist(li))
+	if(is_empty_list(li)==1)
 	{
-		printf("Rien a supprimer, la DListe est deja vide.\n");
-		return new_dlist();
+		printf("Rien a supprimer, la Liste est deja vide.\n");
+		return new_list();
 	}
 
 	if(li->begin == li->end)
@@ -211,14 +209,13 @@ List pop_back_list(List li)
 		free(li);
 		li = NULL;
 
-		return new_dlist();
+		return new_list();
 	}
 
-	DListNode *temp = li->end;
+	ListNode *temp = li->end;
 
 	li->end->next = NULL;
 	temp->next = NULL;
-	temp->back = NULL;
 
 	free(temp);
 	temp = NULL;
@@ -238,9 +235,9 @@ List pop_back_list(List li)
 */
 List pop_front_list(List li)
 {
-	if(is_empty_dlist(li))
+	if(is_empty_list(li) == 1)
 	{
-		printf("Rien a supprimer, la DListe est deja vide.\n");
+		printf("Rien a supprimer, la Liste est deja vide.\n");
 		return new_list();
 	}
 
@@ -274,7 +271,7 @@ List pop_front_list(List li)
 */
 List clear_list(List li)
 {
-	while(!is_empty_list(li))
+	while(is_empty_list(li) != 1)
 		li = pop_back_list(li);
 
 	return new_list();

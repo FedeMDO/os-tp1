@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-// Listes
+// Implementation de Listes et Listes doublement chaineé
 #include "dlist.h" 
+#include "list.h"
 
 int main (){
 
