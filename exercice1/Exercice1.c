@@ -31,6 +31,7 @@ int main(){
     //Question pmap
     pid = fork();
     if(pid == -1){
+        
         // error
         return 1;
     }
@@ -44,10 +45,16 @@ int main(){
     {   
         // child process
         printf("Je suis le fils PID: %d\n", getpid());
-        char buffer[50];
+
+        // On initialise un tableau dans lequel on va stocker la valeur du ppid
+        char buffer[50]; 
         const int i = getppid(); 
-        sprintf(buffer, "%d", i);         
-        execlp("pmap","pmap","-X", buffer, NULL);
+
+        //On fait la conversion en char    
+        sprintf(buffer, "%d", i);  
+
+        // On fait ici un appel système pour exécuter la commande pmap
+        execlp("pmap","pmap","-X", buffer, NULL); 
     }
     return 0;
 }
