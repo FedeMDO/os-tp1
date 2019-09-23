@@ -30,6 +30,7 @@ int i;
 // Question 1 et 2
 void openFile()
 {
+    //Open file
     fd = open(file_name, O_RDONLY);
 
     // get file info
@@ -45,9 +46,15 @@ void fileSize()
 
 void mapFile()
 {
-    /* Memory-map the file. */
+    /* Question 3 : Memory-map the file. */
     mapped = mmap(0, fsize, PROT_READ, MAP_PRIVATE, fd, 0);
+
+    /* Question 4 : Inversion des octets*/
+
+    //On crée un tableau buf dans lequel on va afficher les octets inversés
     char buf[(int)fsize];
+
+    //On crée une boucle qui permet d'inverser les octets
     int y = 0;
     for (i = (int)fsize - 1; i >= 0; i--)
     {
@@ -55,10 +62,16 @@ void mapFile()
         buf[y] = c;
         y++;
     }
+    // "\0" va permettre de s'arrêter à la fin du fichier afin d'exclurer les octets cachés
     buf[y] = '\0';
+
+    //Affichage
     printf("mapped one %s\n", mapped);
     printf("inverted one %s\n", buf);
-    //mapped = mmap(0, fsize, PROT_READ, MAP_PRIVATE, fd, 0);
+
+
+    /* Question 5 et 6*/
+    //On libère l'espace adressé par mmap
     if( munmap(0, fsize) == 0){
         printf("Munmap succesful\n");
     } else {
