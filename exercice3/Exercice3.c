@@ -114,44 +114,35 @@ void square_list(List li){
 
 int main(int argc, char const *argv[])
 {
-    // 1 Créez une liste chaînée contenant les n premiers entiers dans l’ordre croissant
     printf("\n1 - Créez une liste chaînée contenant les n premiers entiers dans l’ordre croissant \n");
     List list1 = new_list();
     list1 = init_list(list1, 1, 10);
 
-    // 2 Créez une fonction qui renvoie la longueur d’une liste.
     printf("\n2 - Créez une fonction qui renvoie la longueur d’une liste \n");
     printf("Longueur du List1: %d\n", list_length(list1));
 
-    // 3 Créez une fonction qui renvoie la moyenne d’une liste
     printf("\n3 - Moyenne \n");
     average_list(list1);
 
-    // 4 Écrivez une fonction qui retourne la liste des carrés d’une autre liste passée en para-mètre.
     printf("\n4 - Écrivez une fonction qui retourne la liste des carrés d’une autre liste \n");
     square_list(list1);
 
-    // 5 Retirez le premier élément d’une liste.
     printf("\n5 - Retirez le premier élément \n");
     list1 = pop_front_list(list1);
     print_list(list1);
 
-    // 6 Retirez le dernier élément d’une liste.
     printf("\n6 - Retirez le dernier élément \n");
     list1 = pop_back_list(list1);
     print_list(list1);
 
-    // 7 Ajoutez un élément à la fin d’une liste.
     printf("\n7 - Ajoutez un élément à la fin. Value 97 \n");
     list1 = push_back_list(list1, 97);
     print_list(list1);
 
-    // 8 Ajoutez un élément au début d’une liste.
     printf("\n8 - Ajoutez un élément au début. Value 57 \n");
     list1 = push_front_list(list1, 57);
     print_list(list1);
 
-    // 9 Écrire une fonction qui concatène deux listes
     printf("\n9 - Écrire une fonction qui concatène deux listes \n");
     List list2 = new_list();
     printf("creating list2 (that is going to be concatened with list1) \n");
@@ -162,14 +153,11 @@ int main(int argc, char const *argv[])
     printf("RESULT: \n");
     print_list(list2);
 
-    // 10 Transformez votre liste en une liste doublement chaînée
     printf("\n10 - Transformez votre liste en une liste doublement chaînée \n");
     DList dlist1 = new_dlist();
     dlist1 = fromListToDlist(list1, dlist1);
 
-    // 11 Créez une liste doublement chaînée circulaire (adaptez les fonctions précédentes)
     printf("\n11 - Créez une liste doublement chaînée circulaire \n");
-    
     printf("    Initialization du Liste doublement chainée \n");
     DList dlist2 = new_dlist();
     dlist2 = fromDListToCircular(dlist2);
@@ -178,7 +166,6 @@ int main(int argc, char const *argv[])
     // Demontration (10 fois)
     showingCircularBehavior(dlist2);
 
-    // 12 Afficher les les n premiers entiers dans l’ordre décroissant.
     printf("\n12 - Afficher les les n premiers entiers dans l’ordre décroissant \n");
     DList dlist3 = new_dlist();
     dlist3 = init_dlist(dlist3, 80, 100);
