@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-
 /* This contains the mmap calls. */
 #include <sys/mman.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 /* Global */
 FILE *fp;
@@ -31,7 +31,7 @@ int i;
 void openFile()
 {
     //Open file
-    fd = open(file_name, O_RDONLY);
+    fd = open(file_name, O_RDWR);
 
     // get file info
     status = fstat(fd, &s);
@@ -69,6 +69,12 @@ void mapFile()
     printf("mapped one %s\n", mapped);
     printf("inverted one %s\n", buf);
 
+    //On inverses lec octects dans le fichier
+    write (fd, buf, fsize); 
+    printf("Now the txt file content look like this %s\n", mapped);
+
+    // Then we close the filedescriptor
+    close (fd);
 
     /* Question 5 et 6*/
     //On libère l'espace adressé par mmap
