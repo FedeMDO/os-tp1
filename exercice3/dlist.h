@@ -28,13 +28,10 @@
 	DList new_dlist(void);
 	Bool is_empty_dlist(DList li);
 	int dlist_length(DList li);
-	int dlist_first(DList li);
-	int dlist_last(DList li);
 	void print_dlist(DList li);
 	DList push_back_dlist(DList li, int x);
 	DList push_front_dlist(DList li, int x);
 	DList pop_back_dlist(DList li);
 	DList pop_front_dlist(DList li);
-	DList clear_dlist(DList li);
 
 #endif

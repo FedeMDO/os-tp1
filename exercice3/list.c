@@ -69,34 +69,6 @@ int list_length(List li)
 /*----------------------------------------------------------------*/
 
 /**
-* Retourne le premier élément de la Liste
-* @param li La Liste
-* @return Le premier entier
-*/
-int list_first(List li)
-{
-	if(is_empty_list(li) == 1)
-		exit(1);
-
-	return li->begin->value;
-}
-
-/**
-* Retourne le dernier élément de la Liste
-* @param li La Liste
-* @return Le dernier entier
-*/
-int list_last(List li)
-{
-	if(is_empty_list(li) == 1)
-		exit(1);
-
-	return li->end->value;
-}
-
-/*----------------------------------------------------------------*/
-
-/**
 * Affiche une Liste
 * @param li La Liste à parcourir
 */
@@ -298,19 +270,4 @@ List pop_front_list(List li)
 	li->length--;
 
 	return li;
-}
-
-/*----------------------------------------------------------------*/
-
-/**
-* Nettoie complètement une Liste de ses éléments
-* @param li La Liste à effacer
-* @return Une nouvelle Liste (vide)
-*/
-List clear_list(List li)
-{
-	while(is_empty_list(li) != 1)
-		li = pop_back_list(li);
-
-	return new_list();
 }

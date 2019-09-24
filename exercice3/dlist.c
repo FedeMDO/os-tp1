@@ -44,34 +44,6 @@ int dlist_length(DList li)
 /*----------------------------------------------------------------*/
 
 /**
-* Retourne le premier élément de la DListe
-* @param li La DListe
-* @return Le premier entier
-*/
-int dlist_first(DList li)
-{
-	if(is_empty_dlist(li))
-		exit(1);
-
-	return li->begin->value;
-}
-
-/**
-* Retourne le dernier élément de la DListe
-* @param li La DListe
-* @return Le dernier entier
-*/
-int dlist_last(DList li)
-{
-	if(is_empty_dlist(li))
-		exit(1);
-
-	return li->end->value;
-}
-
-/*----------------------------------------------------------------*/
-
-/**
 * Affiche une DListe
 * @param li La DListe à parcourir
 */
@@ -270,19 +242,4 @@ DList pop_front_dlist(DList li)
 	li->length--;
 
 	return li;
-}
-
-/*----------------------------------------------------------------*/
-
-/**
-* Nettoie complètement une DListe de ses éléments
-* @param li La DListe à effacer
-* @return Une nouvelle DListe (vide)
-*/
-DList clear_dlist(DList li)
-{
-	while(!is_empty_dlist(li))
-		li = pop_back_dlist(li);
-
-	return new_dlist();
 }
