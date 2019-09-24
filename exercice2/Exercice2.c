@@ -7,8 +7,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-/* Global */
-FILE *fp;
+/* GLOBALS */
 
 /* The file descriptor. */
 int fd;
