@@ -14,9 +14,12 @@ int pid, status, i;
 /*Exercice 1 : Segmentation mémoire */
 
 int main(){
+    
     //On définit la variable stack_variable pour obtenir l'adresse de la stack
     int stack_variable;
-    int *heap_variable = malloc(sizeof(int)); /*On utilise un malloc pour obtenir l'adresse du heap */
+
+    /*On utilise un malloc pour obtenir l'adresse du heap */
+    int *heap_variable = malloc(sizeof(int)); 
 
     /*On affiche ici les différentes adresses*/
     printf("Affichage adresse data : %p\n",&initialized_global);
